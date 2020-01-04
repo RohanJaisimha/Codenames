@@ -4,11 +4,11 @@ import itertools
 import smtplib
 
 app = Flask(__name__)
-
+app.config.from_pyfile('settings.py')
 
 @app.route('/')
 def choice():
-    return render_template("choice.html")
+    return render_template("index.html")
 
 
 @app.route('/start/')
