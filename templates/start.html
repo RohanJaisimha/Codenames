@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<title>
+			Start
+		</title>
+		<style>
+			td
+			{
+				margin:3px;
+				padding:3px;
+				height:113px;
+				width:113px;
+				text-align:center;
+				font-weight:bold;
+				font-size:150%;
+                background-color: #FFFFFF;
+			}
+			body
+			{
+				background-color: #B0B0B0;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tbody>
+				{% for row in words_grid %}
+					<tr>
+                        {% set outer_loop_count = loop.index - 1 %}
+						    {% for color in row %}
+                                {% set inner_loop_count = loop.index - 1 %}
+							    <td onclick="this.style.backgroundColor = '{{color_grid[outer_loop_count][inner_loop_count]}}';" >
+                                    {{words_grid[outer_loop_count][inner_loop_count]}}
+							    </td>
+						{% endfor %}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>
+			Words Grid
+		</title>
+		<style>
+			td
+			{
+				margin:3px;
+				padding:3px;
+				height:113px;
+				width:113px;
+				text-align:center;
+				font-weight:bold;
+				font-size:150%;
+			}
+			body
+			{
+				background-color: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<table border="1">
+			<tbody>
+				{% for row in words_grid %}
+					<tr>
+					{% for word in row %}
+						<td onclick="this.innerText = (this.innerText == '')? '{{word}}' : '';">
+							{{word}}
+						</td>
+					{% endfor %}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</body>
+</html>
