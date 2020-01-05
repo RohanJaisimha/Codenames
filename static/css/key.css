@@ -1,0 +1,24 @@
+td {
+    margin:3px;
+    padding:3px;
+    height:20vw;
+    width:20vw;
+}
+body {
+    background-color:#B0B0B0;
+    font-size:3vh;
+    font-family: 'Roboto', sans-serif;
+}
+form {
+    margin: auto;
+    width: 50%;
+    padding-top: 30vh;
+    text-align: center;
+}
+input {
+    transform: scale(4);
+    margin: 4vh;
+}
+input.button {
+    border-color: darkgrey;
+}

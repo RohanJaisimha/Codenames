@@ -4,26 +4,18 @@
 		<title>
 			Key
 		</title>
+        <title>Choose</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/key.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 		<meta charset="utf-8">
-		<style>
-			td
-			{
-				margin:3px;
-				padding:3px;
-				height:113px;
-				width:113px;
-			}
-            body
-            {
-                background-color:#B0B0B0;
-            }
-		</style>
 	</head>
 	<body>
-		<form>
-			Enter your key's ID: <input type="text" name="id">
+		<form onsubmit="main()">
+			Enter your key's ID
 			<br>
-			<input type="button" onclick="main()" value="Submit">
+			<input type="text" name="id">
+			<br>
+			<input class="button" type="submit" value="Submit">
 		</form>
 	</body>
 	<script type="text/javascript">
