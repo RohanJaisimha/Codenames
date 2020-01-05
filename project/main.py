@@ -20,7 +20,7 @@ def start():
 
 
 def createWordsGrid():
-    fin = open("words.txt", 'r')
+    fin = open("project/words.txt", 'r')
     words = [line.strip() for line in fin.readlines()]
     fin.close()
     words = random.sample(words, 25)
