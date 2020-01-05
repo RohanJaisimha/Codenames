@@ -1,0 +1,21 @@
+td {
+    margin:3px;
+    padding:3px;
+    height:113px;
+    width:113px;
+    text-align:center;
+    font-weight:bold;
+    font-size:150%;
+    background-color: #FFFFFF;
+}
+body {
+    background-color: #B0B0B0;
+}
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}

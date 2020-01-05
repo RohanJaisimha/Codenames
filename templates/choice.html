@@ -1,13 +1,12 @@
 <html>
 	<head>
-		<title>
-			Choose
-		</title>
+		<title>Choose</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
 	</head>
 	<body>
 			<p>
-				<a href="{{url_for('start')}}">Start New Game</a>
-				<a href="{{url_for('board')}}">Show Game Board</a>
+				<a href="{{url_for('start')}}" class="button">Start New Game</a>
+				<a href="{{url_for('board')}}" class="button">Show Game Board</a>
 			</p>
 	</body>
 </html>
