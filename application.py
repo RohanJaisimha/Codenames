@@ -4,9 +4,6 @@ import itertools
 import smtplib
 
 application = Flask(__name__)
-words_grid = []
-color_grid = []
-starting_color = ""
 
 @application.route('/')
 def index():
@@ -15,22 +12,8 @@ def index():
 
 @application.route('/start/')
 def start():
-    global words_grid
-    global color_grid
-    global starting_color
     words_grid = createWordsGrid()
     color_grid, starting_color = createColorGrid()
-    return board()
-
-
-@application.route('/board/')
-def board():
-    global words_grid
-    global color_grid
-    global starting_color
-    if not words_grid:
-        words_grid = createWordsGrid()
-        color_grid, starting_color = createColorGrid()
     color_grid_code = encodeColorGrid(color_grid)
     return render_template("board.html", words_grid=words_grid, color_grid=color_grid, starting_color=starting_color, color_grid_code=color_grid_code)
 
