@@ -13,41 +13,50 @@
 				height:113px;
 				width:113px;
 			}
+            body
+            {
+                background-color:#B0B0B0;
+            }
 		</style>
 	</head>
 	<body>
+		<form>
+			Enter your key's ID: <input type="text" name="id">
+			<br>
+			<input type="button" onclick="main()" value="Submit">
+		</form>
 	</body>
 	<script type="text/javascript">
 		function main()
 		{
-			let val = getInput();
+			let id = getInput();
+			id = convertToBase4(id);
+			let val = validateId(id);
+			if(!val[0])
+			{
+				alert("Your id was incorrect. Please try again");
+				return;
+			}
 			let starting_color = val[1];
-			let id = val[0];
 			createTable(id, starting_color);
 		}
 		function getInput()
 		{
-			while(true)
-			{
-				let id = prompt("Enter your key's id");
-				id = convertToBase4(id);
-				let val = validateId(id);
-				if(val[0])
-					return [id, val[1]];	
-				alert("Your id was incorrect");
-			}
+			let id = document.getElementsByName("id")[0].value;
+			return id;
 		}	
 		function createTable(id, starting_color)
 		{
-			document.writeln("<table><tbody><tr><td colspan='5' style='background-color:" + starting_color + ";'></td></tr><tr><td></td><tr>");
+			let table_code = "<table><tbody><tr>";
 			let colors = ["Black", "Blue", "#FFFDD0", "Red"];
 			for(let i = 0; i < id.length; i += 1)
 			{
-				document.writeln("<td style='background-color:" + colors[id.charAt(i)] + ";'></td>");
+				table_code += "<td style='background-color:" + colors[id.charAt(i)] + ";'></td>";
 				if(i % 5 == 4)
-					document.writeln("</tr><tr>");
+					table_code += "</tr><tr>";
 			}
-			document.writeln("</tr></tbody></table>");
+			table_code += "</tr><tr><td></td></tr><tr><td colspan='5' style='background-color:" + starting_color + ";'></td></tr></tbody></table>";
+			document.getElementsByTagName("body")[0].innerHTML = table_code;
 		}
 		function convertToBase4(id)
 		{
@@ -79,6 +88,5 @@
 				return [false, undefined];
 			}
 		}
-		main();
 	</script>
 </html>
