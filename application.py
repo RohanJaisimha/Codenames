@@ -9,8 +9,8 @@ color_grid = []
 starting_color = ""
 
 @application.route('/')
-def choice():
-    return render_template("choice.html")
+def index():
+    return render_template("index.html")
 
 
 @application.route('/start/')
@@ -20,7 +20,6 @@ def start():
     global starting_color
     words_grid = createWordsGrid()
     color_grid, starting_color = createColorGrid()
-    #emailColorGrid(color_grid, starting_color)
     return board()
 
 
@@ -32,7 +31,13 @@ def board():
     if not words_grid:
         words_grid = createWordsGrid()
         color_grid, starting_color = createColorGrid()
-    return render_template("board.html", words_grid=words_grid, color_grid=color_grid, starting_color=starting_color)
+    color_grid_code = encodeColorGrid(color_grid)
+    return render_template("board.html", words_grid=words_grid, color_grid=color_grid, starting_color=starting_color, color_grid_code=color_grid_code)
+
+
+@application.route('/key/')
+def key():
+    return render_template("key.html")
 
 
 def createWordsGrid():
@@ -64,33 +69,14 @@ def createColorGrid():
     return grid, starting_color
 
 
-def emailColorGrid(color_grid, starting_color):
-    emails = ["email1@gmail.com", "email2@gmail.com"]
-    message = createMessage(color_grid, starting_color)
-    s = smtplib.SMTP('smtp.gmail.com', 587)
-    s.starttls()
-    s.login("emailid", "password")
-    for email in emails:
-        s.sendmail("rohan@jaisimha.com", email, message)
-    s.quit()
-
-def createMessage(color_grid, starting_color): 
-    message = "Subject: Your Codenames key"
-    message += "\nContent-Type: text/html; charset='UTF-8'"
-    message += "\n\n"
-    message += "<html><head><style>td{margin:3px;padding:3px;height:113px;width:113px;text-align:center;font-weight:bold;font-size:150%;}</style></head><body><table><tbody><tr>"
-    message += "<td colspan='5' style='background-color:" + starting_color + ";'></td>" 
-    message += "</tr><tr><td></td></tr>"
+def encodeColorGrid(color_grid):
+    color_codes = {"Black": '0', "Blue": '1', "#FFFDD0": '2', "Red": '3'}
+    code = ""
     for row in color_grid:
-        message += "<tr>"
         for color in row:
-            message += "<td style='background-color:" + color + ";'></td>"
-        message += "</tr>"
-    message += "<tr><td></td></tr><tr>"
-    message += "<td colspan='5' style='background-color:" + starting_color + ";'></td>"
-    message += "</tr></tbody></table></body></html>"
-    return message
+            code += color_codes[color]
+    return int(code, 4)
     
 
 if(__name__ == "__main__"):
-    application.run(debug=True)
+    application.run(host="0.0.0.0", port=5000, debug=True)
