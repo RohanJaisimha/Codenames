@@ -3,15 +3,15 @@ import random
 import itertools
 import smtplib
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 
-@app.route('/')
+@application.route('/')
 def choice():
     return render_template("choice.html")
 
 
-@app.route('/start/')
+@application.route('/start/')
 def start():
     words_grid = createWordsGrid()
     color_grid, starting_color = createColorGrid()
@@ -77,4 +77,4 @@ def createMessage(color_grid, starting_color):
     
 
 if(__name__ == "__main__"):
-    app.run(debug=True)
+    application.run(debug=True)
