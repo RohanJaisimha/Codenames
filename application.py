@@ -20,7 +20,8 @@ def start():
 
 @application.route('/key/')
 def key():
-    return render_template("key.html")
+    id_string = request.args.get('id')
+    return render_template("key_table.html", id=id_string) if id_string else render_template("key_form.html")
 
 
 def createWordsGrid():
