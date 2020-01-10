@@ -1,12 +1,17 @@
 td {
-    margin:3px;
-    padding:3px;
-    height:113px;
-    width:113px;
+    margin:0.5vh;
+    padding:0.5vh;
+    height:20%;
+    width:20%;
     text-align:center;
     font-weight:bold;
-    font-size:150%;
+    font-size:4vh;
     background-color: #FFFFFF;
+}
+tbody {
+    height: 97vh;
+    width: 97vh;
+    display: inherit;
 }
 body {
     background-color: #B0B0B0;
@@ -28,4 +33,9 @@ div.center {
     width: 50%;
     padding-top: 30vh;
     text-align: center;
+}
+#QRCodeContainer {
+    position: absolute;
+    top: 3vh;
+    text-align:center;
 }

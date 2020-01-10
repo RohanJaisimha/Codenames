@@ -3,10 +3,12 @@
 	<head>
 		<title>Start</title>
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+		<script type="text/javascript" src="{{ url_for('static', filename='js/qrcode/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/qrcode/qrcode.js') }}"></script>
 	</head>
-	<body>
+	<body onload="generateQRCode(); resizeTable();">
 		<table>
-			<tbody>
+			<tbody id='table'>
 				{% for row in words_grid %}
 					<tr>
                         {% set outer_loop_count = loop.index - 1 %}
@@ -20,9 +22,31 @@
 				{% endfor %}
 			</tbody>
 		</table>
-		<br><br><br>
-		<p>
-			The code for the color grid is {{color_grid_code}}
-		</p>
+		<div id="QRCodeContainer">
+            <div id="QRCode">
+            </div>
+            <p>
+                The ID is {{color_grid_code}}
+            </p>
+		</div>
+        
 	</body>
+	<script>
+		function generateQRCode() {
+            let size = Math.min(window.innerHeight*0.9, window.innerWidth - document.getElementById('table').offsetWidth*1.25);
+		    var qrcode = new QRCode(document.getElementById("QRCode"), {
+			    text: "http://codenames.roartec.com/key/?id={{color_grid_code}}",
+				width: size,
+				height: size,
+				colorDark : "#000000",
+				colorLight : "#ffffff",
+				correctLevel : QRCode.CorrectLevel.H
+				});
+		}
+        function resizeTable() {
+            document.getElementById('table').style.height = window.innerHeight*0.95 + "px";
+            document.getElementById('table').style.width = window.innerHeight*0.95 + "px";
+            document.getElementById('QRCodeContainer').style.left = (document.getElementById('table').offsetWidth*1.1) + "px";
+        }
+	</script>
 </html>
