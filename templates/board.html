@@ -14,7 +14,7 @@
                         {% set outer_loop_count = loop.index - 1 %}
 						    {% for color in row %}
                                 {% set inner_loop_count = loop.index - 1 %}
-							    <td onclick="this.style.backgroundColor = '{{color_grid[outer_loop_count][inner_loop_count]}}';" >
+				<td onclick="this.style.backgroundColor = (this.style.backgroundColor == 'white')?'{{color_grid[outer_loop_count][inner_loop_count]}}':'white';" >
                                     {{words_grid[outer_loop_count][inner_loop_count]}}
 							    </td>
 						{% endfor %}
