@@ -4,15 +4,14 @@
 		<title>
 			Key
 		</title>
-        <title>Choose</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/key.css') }}">
-        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-        <script src="{{ url_for('static', filename='js/key.js') }}"></script>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/key.css') }}">
+		<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+		<script src="{{ url_for('static', filename='js/key.js') }}"></script>
 		<meta charset="utf-8">
 	</head>
 	<body>
 		<script>
-			createKeyTable("{{id}}")
+			createKeyTable("{{ id }}")
 		</script>
 	</body>
 </html>
