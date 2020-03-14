@@ -5,6 +5,8 @@ function main() {
 function createKeyTable(id) {
 	console.log('id is '+id)
 	id = convertToBase4(id);
+	if(id.length == 24)
+		id = "0" + id;
 	let val = validateId(id);
 	if(!val[0])
 	{
@@ -35,8 +37,6 @@ function convertToBase4(id) {
 }
 function validateId(id) {
 	let countBlack = 0, countBlue = 0, countCream = 0, countRed = 0;
-	if(id.length == 24)
-		id = "0" + id;
 	for(let i = 0; i < id.length; i += 1)
 	{
 		let chr = id.charAt(i);
