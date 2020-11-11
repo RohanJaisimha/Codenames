@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Choose</title>
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
-		<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-	</head>
-	<body>
-		<div class="center">
-			<p>
-				<a href="{{ url_for('start') }}" class="button">Start New Game</a>
-			</p>
-			<p>
-				<a href="{{ url_for('key') }}" class="button">View Key</a>
-			</p>
-		</div>
-	</body>
+    <head>
+        <title>
+            Choose
+        </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="center">
+            <p>
+                <a href="{{ url_for('start') }}" class="button">
+                    Start New Game
+                </a>
+            </p>
+            <p>
+                <a href="{{ url_for('key') }}" class="button">
+                    View Key
+                </a>
+            </p>
+        </div>
+    </body>
 </html>
