@@ -5,8 +5,10 @@
             Start
         </title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
-        <script type="text/javascript" src="{{ url_for('static', filename='js/qrcode/qrcode.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/qrcode/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/qrcode.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/mousetrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/board.js') }}"></script>
     </head>
     <body onload="main()">
         <table>
@@ -16,7 +18,7 @@
                         {% set outer_loop_count = loop.index - 1 %}
                         {% for color in row %}
                             {% set inner_loop_count = loop.index - 1 %}
-                            <td onclick="changeColor(this, '{{ color_grid[outer_loop_count][inner_loop_count] }}');">
+                            <td id="{{ outer_loop_count * 5 + inner_loop_count + 1 }}" onclick="changeColor(this, '{{ color_grid[outer_loop_count][inner_loop_count] }}');">
                                 {{ words_grid[outer_loop_count][inner_loop_count] }}
                             </td>
                         {% endfor %}
@@ -31,43 +33,5 @@
                 The ID is {{ color_grid_code }}
             </p>
         </div>
-        
     </body>
-    <script>
-        function generateQRCode() {
-            let size = Math.min(window.innerHeight*0.9, window.innerWidth - document.getElementById('table').offsetWidth*1.25);
-            var qrcode = new QRCode(document.getElementById("QRCode"), {
-                text: window.location.host + "/key/?id={{color_grid_code}}",
-                width: size,
-                height: size,
-                colorDark : "#000000",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
-            });
-        }
-        function resizeTable() {
-            document.getElementById('table').style.height = window.innerHeight*0.95 + "px";
-            document.getElementById('table').style.width = window.innerHeight*0.95 + "px";
-            document.getElementById('QRCodeContainer').style.left = (document.getElementById('table').offsetWidth*1.1) + "px";
-        }
-        function changeColor(element, color) {
-            if(!element.style.backgroundColor) {
-                if(color == "Black") {
-                    element.style.color = "white";
-                }
-                element.style.backgroundColor = color;
-            }
-            else {
-                if(color == "Black") {
-                    element.style.color = "black";
-                }
-                element.style.backgroundColor = "";
-            }
-        }
-        function main() {
-            generateQRCode();
-            resizeTable();
-        }
-        //window.onload = main();
-    </script>
 </html>
