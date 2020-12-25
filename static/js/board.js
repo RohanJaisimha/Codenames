@@ -1,7 +1,7 @@
-function generateQRCode() {
+function generateQRCode(color_grid_code) {
     let size = Math.min(window.innerHeight*0.9, window.innerWidth - document.getElementById('table').offsetWidth*1.25);
     var qrcode = new QRCode(document.getElementById("QRCode"), {
-        text: window.location.host + "/key/?id={{color_grid_code}}",
+        text: window.location.host + "/key/?id=" + color_grid_code,
         width: size,
         height: size,
         colorDark : "#000000",
@@ -43,8 +43,8 @@ function setupMousetrapEvents() {
         });
     }
 }
-function main() {
+function main(color_grid_code) {
     setupMousetrapEvents();
-    generateQRCode();
+    generateQRCode(color_grid_code);
     resizeTable();
 }

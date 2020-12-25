@@ -10,7 +10,7 @@
         <script type="text/javascript" src="{{ url_for('static', filename='js/mousetrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/board.js') }}"></script>
     </head>
-    <body onload="main()">
+    <body onload="main('{{ color_grid_code }}')">
         <table>
             <tbody id='table'>
                 {% for row in words_grid %}
