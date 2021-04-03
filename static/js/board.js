@@ -1,8 +1,7 @@
 function generateQRCode(color_grid_code) {
     let size = Math.min(window.innerHeight*0.9, window.innerWidth - document.getElementById('table').offsetWidth*1.25);
-    let qrCodeUrl = window.location.host + "/key/?id=" + color_grid_code;
     var qrcode = new QRCode(document.getElementById("QRCode"), {
-        text: qrCodeUrl,
+        text: window.location.host + "/key/?id=" + color_grid_code,
         width: size,
         height: size,
         colorDark : "#000000",
@@ -10,7 +9,7 @@ function generateQRCode(color_grid_code) {
         correctLevel : QRCode.CorrectLevel.H
     });
     document.querySelector("#QRCodeContainer").onclick = function() {
-        window.open(qrCodeUrl);
+        window.open("/key/?id=" + color_grid_code);
     };
 }
 function resizeTable() {
