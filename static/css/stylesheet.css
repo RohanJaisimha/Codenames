@@ -37,5 +37,8 @@ div.center {
 #QRCodeContainer {
     position: absolute;
     top: 3vh;
-    text-align:center;
+    text-align: center;
+}
+#QRCodeContainer:hover {
+    cursor: pointer;
 }

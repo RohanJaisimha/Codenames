@@ -1,13 +1,17 @@
 function generateQRCode(color_grid_code) {
     let size = Math.min(window.innerHeight*0.9, window.innerWidth - document.getElementById('table').offsetWidth*1.25);
+    let qrCodeUrl = window.location.host + "/key/?id=" + color_grid_code;
     var qrcode = new QRCode(document.getElementById("QRCode"), {
-        text: window.location.host + "/key/?id=" + color_grid_code,
+        text: qrCodeUrl,
         width: size,
         height: size,
         colorDark : "#000000",
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.H
     });
+    document.querySelector("#QRCodeContainer").onclick = function() {
+        window.open(qrCodeUrl);
+    };
 }
 function resizeTable() {
     document.getElementById('table').style.height = window.innerHeight*0.95 + "px";
